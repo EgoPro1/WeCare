@@ -24,13 +24,13 @@ class SelectRolActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
         setContentView(binding.root)
 
 //Recuperamos los elementos del string array
-        val countries = resources.getStringArray(R.array.rols)
+        val rols = resources.getStringArray(R.array.rols)
 
 //Creación del adapter
         val adapter = ArrayAdapter(
             this, // Contexto
             R.layout.lista_item, //Layout del diseño
-            countries //Array
+            rols //Array
         )
         with(binding.autoCompleteTextView) {
             setAdapter(adapter)
