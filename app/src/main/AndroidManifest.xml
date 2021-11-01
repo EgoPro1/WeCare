@@ -9,9 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Toolbar1">
-        <activity android:name=".SelectorActivity"
+        <activity android:name=".RegisterEventActivity"></activity>
+        <activity android:name=".MiEspActivity" />
+        <activity android:name=".PerfilActivity" />
+        <activity
+            android:name=".SelectorActivity"
             android:theme="@style/Theme.Toolbar">
-            ></activity>
+            >
+        </activity>
         <activity android:name=".RegisterActivity2" />
         <activity android:name=".RegisterActivity1" />
         <activity android:name=".SelectRolActivity" />

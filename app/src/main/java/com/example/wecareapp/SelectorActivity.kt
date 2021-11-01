@@ -1,7 +1,12 @@
 package com.example.wecareapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -15,15 +20,12 @@ class SelectorActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         // Instancia del view binding
         val binding = ActivitySelectorBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         val bottomNavigationView = binding.buttonNav
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-
-
-
         val appBarConfiguration = AppBarConfiguration(
             setOf(R.id.homeFragment, R.id.stadisticsFragment, R.id.feelingFragment2,R.id.statsFragment)
         )
@@ -34,4 +36,49 @@ class SelectorActivity : AppCompatActivity() {
         bottomNavigationView.setupWithNavController(navController)
 
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_options,menu)
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        if(item.itemId==R.id.poner_iddecuenta){
+            Toast.makeText(this,"cuenta",Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, PerfilActivity::class.java).apply {
+                //putExtra("Username",user.name)
+            }
+            startActivity(intent)
+            return true
+        }
+        if(item.itemId==R.id.poner_iddecuentaesp){
+            Toast.makeText(this,"cuenta_ESP",Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, MiEspActivity::class.java).apply {
+                //putExtra("Username",user.name)
+            }
+            startActivity(intent)
+            return true
+        }
+        if(item.itemId==R.id.poner_idsolic){
+            Toast.makeText(this,"solicitud",Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, PerfilActivity::class.java).apply {
+                //putExtra("Username",user.name)
+            }
+            startActivity(intent)
+            return true
+        }
+        if(item.itemId==R.id.poner_idcerrarsesion){
+            Toast.makeText(this,"cerrar sesion",Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, PerfilActivity::class.java).apply {
+                //putExtra("Username",user.name)
+            }
+            startActivity(intent)
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+
 }
