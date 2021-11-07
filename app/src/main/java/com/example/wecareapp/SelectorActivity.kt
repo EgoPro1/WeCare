@@ -63,7 +63,7 @@ class SelectorActivity : AppCompatActivity() {
         }
         if(item.itemId==R.id.poner_idsolic){
             Toast.makeText(this,"solicitud",Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, PerfilActivity::class.java).apply {
+            val intent = Intent(this, RelaxSelectorActivity::class.java).apply {
                 //putExtra("Username",user.name)
             }
             startActivity(intent)
@@ -71,7 +71,7 @@ class SelectorActivity : AppCompatActivity() {
         }
         if(item.itemId==R.id.poner_idcerrarsesion){
             Toast.makeText(this,"cerrar sesion",Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, PerfilActivity::class.java).apply {
+            val intent = Intent(this, MediaPlayerActivity::class.java).apply {
                 //putExtra("Username",user.name)
             }
             startActivity(intent)

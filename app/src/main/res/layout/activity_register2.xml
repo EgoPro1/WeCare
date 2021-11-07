@@ -102,7 +102,7 @@
                 app:layout_constraintVertical_bias="0.300">
 
                 <AutoCompleteTextView
-                    android:id="@+id/tv_apellido"
+                    android:id="@+id/tv_apellido1"
                     android:layout_width="278dp"
                     android:textSize="16dp"
                     android:layout_height="51dp"
@@ -126,7 +126,7 @@
                 app:layout_constraintVertical_bias="0.460">
 
                 <AutoCompleteTextView
-                    android:id="@+id/correo"
+                    android:id="@+id/tv_correo1"
                     android:layout_width="278dp"
                     android:layout_height="51dp"
                     android:hint="Correo"
@@ -189,7 +189,7 @@
                 app:layout_constraintVertical_bias="0.140">
 
                 <AutoCompleteTextView
-                    android:id="@+id/tv_nombre"
+                    android:id="@+id/tv_nombre1"
                     android:layout_width="278dp"
                     android:layout_height="51dp"
                     android:textSize="16dp"

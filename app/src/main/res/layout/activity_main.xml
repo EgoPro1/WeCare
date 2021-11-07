@@ -111,7 +111,7 @@
                 app:layout_constraintVertical_bias="0.300">
 
                 <AutoCompleteTextView
-                    android:id="@+id/tv_correolog"
+                    android:id="@+id/tv_emaillog"
                     android:layout_width="278dp"
                     android:textSize="16dp"
                     android:layout_height="51dp"
@@ -134,7 +134,7 @@
                 app:layout_constraintVertical_bias="0.700">
 
                 <AutoCompleteTextView
-                    android:id="@+id/tv_contralog"
+                    android:id="@+id/tv_passwordlog"
                     android:layout_width="278dp"
                     android:textSize="16dp"
                     android:layout_height="51dp"
@@ -151,7 +151,7 @@
             >
 
             <Button
-                android:id="@+id/Inicio_sesion"
+                android:id="@+id/bt_login"
                 android:layout_width="167dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -173,7 +173,7 @@
                 android:layout_marginTop="10dp"/>
 
             <Button
-                android:id="@+id/crear_cuenta"
+                android:id="@+id/bt_signup"
                 android:layout_width="169dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

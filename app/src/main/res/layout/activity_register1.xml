@@ -125,7 +125,7 @@
                 app:layout_constraintVertical_bias="0.715">
 
                 <AutoCompleteTextView
-                    android:id="@+id/correo"
+                    android:id="@+id/tv_correo"
                     android:layout_width="278dp"
                     android:layout_height="51dp"
                     android:textSize="16dp"

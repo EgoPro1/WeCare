@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val registro=findViewById<Button>(R.id.crear_cuenta)
+        val registro=findViewById<Button>(R.id.bt_signup)
         registro.setOnClickListener(){
             val intent = Intent(this, SelectRolActivity::class.java).apply {
                 //putExtra("Username",user.name)
