@@ -4,10 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.Toast
+import android.widget.*
 import com.example.wecareapp.databinding.ActivityMainBinding
 import com.example.wecareapp.databinding.ActivityMainBinding.inflate
 import com.example.wecareapp.databinding.ActivitySelectRolBinding
@@ -34,19 +31,31 @@ class SelectRolActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
         )
         with(binding.autoCompleteTextView) {
             setAdapter(adapter)
-            onItemClickListener=this@SelectRolActivity
+            onItemClickListener = this@SelectRolActivity
         }
 
-        val rol=findViewById<Button>(R.id.bt_rol)
-        rol.setOnClickListener(){
-            val intent = Intent(this, RegisterActivity2::class.java).apply {
-                //putExtra("Username",user.name)
+        val bt_rol = findViewById<Button>(R.id.bt_rol)
+
+
+        bt_rol.setOnClickListener() {
+            var autocmp = findViewById<AutoCompleteTextView>(R.id.autoCompleteTextView)
+            var aux = autocmp.text.toString()
+
+            if (aux == "Paciente") {
+                val intent = Intent(this, RegisterActivity1::class.java).apply {
+                    //putExtra("Username",user.name)
+                }
+                startActivity(intent)
+            }else if (aux == "Especialista"){
+                val intent = Intent(this, RegisterActivity2::class.java).apply {
+                    //putExtra("Username",user.name)
+                }
+                startActivity(intent)
+
             }
-            startActivity(intent)
+
         }
-
     }
-
 
     override fun onItemClick(
         parent: AdapterView<*>?,

@@ -104,6 +104,7 @@
                     android:id="@+id/tv_apellido"
                     android:layout_width="278dp"
                     android:textSize="16dp"
+                    android:text=""
                     android:layout_height="51dp"
                     android:hint="Apellidos" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -129,6 +130,7 @@
                     android:layout_width="278dp"
                     android:layout_height="51dp"
                     android:textSize="16dp"
+                    android:text=""
                     android:hint="Correo" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -149,6 +151,7 @@
                     android:id="@+id/tv_contraseña"
                     android:layout_width="278dp"
                     android:textSize="16dp"
+                    android:text=""
                     android:layout_height="51dp"
                     android:hint="Contraseña"></AutoCompleteTextView>
 
@@ -172,6 +175,7 @@
                     android:layout_width="278dp"
                     android:layout_height="51dp"
                     android:textSize="16dp"
+                    android:text=""
                     android:hint="Nombres" />
             </com.google.android.material.textfield.TextInputLayout>
 
