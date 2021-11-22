@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.NavHostFragment
@@ -29,11 +30,16 @@ class SelectorActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(
             setOf(R.id.homeFragment, R.id.stadisticsFragment, R.id.feelingFragment2,R.id.statsFragment)
         )
+
         val navController = navHostFragment.navController
 
         setupActionBarWithNavController(navController,appBarConfiguration)
         // Sincronizacion del navController con nuesto bottom navigation
         bottomNavigationView.setupWithNavController(navController)
+
+
+
+
 
     }
 
@@ -69,9 +75,17 @@ class SelectorActivity : AppCompatActivity() {
             startActivity(intent)
             return true
         }
+        if(item.itemId==R.id.poner_idrelax){
+            Toast.makeText(this,"Relajacion",Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, RelaxSelectorActivity::class.java).apply {
+                //putExtra("Username",user.name)
+            }
+            startActivity(intent)
+            return true
+        }
         if(item.itemId==R.id.poner_idcerrarsesion){
             Toast.makeText(this,"cerrar sesion",Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, MediaPlayerActivity::class.java).apply {
+            val intent = Intent(this, RegisterEventActivity::class.java).apply {
                 //putExtra("Username",user.name)
             }
             startActivity(intent)

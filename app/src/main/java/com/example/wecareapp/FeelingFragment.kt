@@ -5,28 +5,31 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.demo.retrofitwithpost.GetEventsVM
+import com.example.wecareapp.model.Event
+import com.example.wecareapp.model.EventGet
+import com.example.wecareapp.model.EventList
+import com.example.wecareapp.recyclerview.RecyclerViewAdapter
+import com.example.wecareapp.viewmodel.CreateEventVM
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [FeelingFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class FeelingFragment : Fragment() {
+class FeelingFragment : Fragment(){
+
     // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    lateinit var recyclerViewAdapter: RecyclerViewAdapter
+    lateinit var viewModel: GetEventsVM
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
         }
     }
 
@@ -34,8 +37,13 @@ class FeelingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val view=inflater.inflate(R.layout.fragment_feeling2, container, false)
+        initRecyclerView(view)
+        initViewModel()
+
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_feeling2, container, false)
+        return view
     }
 
     companion object {
@@ -52,9 +60,32 @@ class FeelingFragment : Fragment() {
         fun newInstance(param1: String, param2: String) =
             FeelingFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
                 }
             }
     }
+
+    private fun initRecyclerView(view:View){
+        var recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
+        recyclerView.layoutManager=LinearLayoutManager(activity)
+
+        recyclerViewAdapter= RecyclerViewAdapter()
+        recyclerView.adapter=recyclerViewAdapter
+
+    }
+    fun initViewModel() {
+
+        viewModel = ViewModelProvider(this).get( GetEventsVM::class.java)
+        viewModel.getUserListObserverable().observe(viewLifecycleOwner, Observer<List<EventGet>?> {
+            if(it == null) {
+
+            } else {
+
+                recyclerViewAdapter.EventList = it.toMutableList()
+                recyclerViewAdapter.notifyDataSetChanged()
+            }
+        })
+        viewModel.EventList()
+    }
+
+
 }

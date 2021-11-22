@@ -13,14 +13,14 @@ class RelaxSelectorActivity : AppCompatActivity() {
 
         var buttonbreath =findViewById<ImageButton>(R.id.bt_respirar)
         buttonbreath.setOnClickListener(View.OnClickListener {
-            val intent = Intent(this, ButtonBreathActivity::class.java).apply {
+            var intent = Intent(this, ButtonBreathActivity::class.java).apply {
                 //putExtra("Username",user.name)
             }
             startActivity(intent)
         })
-        var buttonmusic =findViewById<ImageButton>(R.id.bt_respirar)
-        buttonbreath.setOnClickListener(View.OnClickListener {
-            val intent = Intent(this, MediaPlayerActivity::class.java).apply {
+        var buttonmusic =findViewById<ImageButton>(R.id.bt_escuchar_musica)
+        buttonmusic.setOnClickListener(View.OnClickListener {
+            var intent = Intent(this, MediaPlayerActivity::class.java).apply {
                 //putExtra("Username",user.name)
             }
             startActivity(intent)

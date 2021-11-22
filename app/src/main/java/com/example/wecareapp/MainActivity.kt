@@ -1,5 +1,6 @@
 package com.example.wecareapp
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -24,10 +25,12 @@ class MainActivity : AppCompatActivity() {
         initViewModel()
         val registro=findViewById<Button>(R.id.bt_signup)
         val login=findViewById<Button>(R.id.bt_login)
+        val sharedPref = this?.getSharedPreferences(
+            getString(R.string.preference_file_key), Context.MODE_PRIVATE)
 
         login.setOnClickListener(){
 
-            if(createLogUser()){
+            if(createLogUser(this)){
                  val intent = Intent(this, SelectRolActivity::class.java).apply {
                 //putExtra("Username",user.name)
                 }
@@ -43,13 +46,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun createLogUser():Boolean {
+
+    private fun createLogUser(con: Context):Boolean {
 
         val Email=findViewById<AutoCompleteTextView>(R.id.tv_emaillog).text.toString().replace(" ","")
         val Password=findViewById<AutoCompleteTextView>(R.id.tv_passwordlog).text.toString().replace(" ","")
 
         val user = User( Email, Password)
-        return viewModel.createNewUser(user)
+        return viewModel.createNewUser(user,con)
 
     }
 

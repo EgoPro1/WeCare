@@ -9,22 +9,19 @@ import com.example.wecareapp.MainActivity
 import com.example.wecareapp.SelectRolActivity
 import com.example.wecareapp.SelectorActivity
 import com.example.wecareapp.api.RetroInstance
-import com.example.wecareapp.model.Specialist
-import com.example.wecareapp.model.SpecialistResponse
-import com.example.wecareapp.model.User
-import com.example.wecareapp.model.UserResponse
+import com.example.wecareapp.model.*
 import com.example.wecareapp.services.RetroServiceInterface
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class CreateLogUserVM: ViewModel() {
-    lateinit var createNewUserLiveData: MutableLiveData<UserResponse?>
+class CreateEventVM: ViewModel() {
+    lateinit var createNewUserLiveData: MutableLiveData<EventResponse?>
     init {
         createNewUserLiveData = MutableLiveData()
     }
 
-    fun getCreateNewUserObserver(): MutableLiveData<UserResponse?> {
+    fun getCreateNewUserObserver(): MutableLiveData<EventResponse?> {
         return createNewUserLiveData
     }
 
@@ -37,13 +34,13 @@ class CreateLogUserVM: ViewModel() {
         }
     }
 
-    fun createNewUser(user: User,con: Context): Boolean {
 
+    fun createNewEvent(user: Event, con: Context){
         var success= false
         val retroService  = RetroInstance.getRetroInstance().create(RetroServiceInterface::class.java)
-        val call = retroService.createLog(user)
-        call.enqueue(object: Callback<UserResponse?> {
-            override fun onResponse(call: Call<UserResponse?>, response: Response<UserResponse?>) {
+        val call = retroService.createEvent(user)
+        call.enqueue(object: Callback<EventResponse?> {
+            override fun onResponse(call: Call<EventResponse?>, response: Response<EventResponse?>) {
                 if(response.isSuccessful) {
                     createNewUserLiveData.postValue(response.body())
                     success= true
@@ -56,14 +53,15 @@ class CreateLogUserVM: ViewModel() {
                 }
             }
 
-            override fun onFailure(call: Call<UserResponse?>, t: Throwable) {
+            override fun onFailure(call: Call<EventResponse?>, t: Throwable) {
 
                 createNewUserLiveData.postValue(null)
             }
         })
-
-        return success
     }
+
+
+
 }
 
 

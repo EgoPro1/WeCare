@@ -14,6 +14,9 @@
         android:id="@+id/poner_idsolic"
         android:title="Solicitudes" />
     <item
+        android:id="@+id/poner_idrelax"
+        android:title="Relajacion" />
+    <item
         android:id="@+id/poner_idcerrarsesion"
         android:title="Cerrar Sesión" />
 </menu>
