@@ -82,11 +82,23 @@ class StadisticsFragment : Fragment(){
             } else {
                 var array =ArrayList<Int>()
                 var domain=ArrayList<Int>()
+                array.add(0)
+                array.add(0)
+                if(it.isNotEmpty())
                 for(e in it){
-                    array.add(e.eventScore)
+
                     var time=e.eventTime.subSequence(0, 2)
-                    domain.add(time.toString().toInt())
+                    array.add(time.toString().toInt())
+                    array.add(e.eventScore)
                 }
+                else{
+                    array.add(10)
+                    array.add(10)
+
+                }
+                array.add(0)
+                array.add(array[array.size-2]+array[3])
+
                 //Añado al plot
                 updatechart(array,domain)
 
@@ -96,39 +108,27 @@ class StadisticsFragment : Fragment(){
     }
 
     private fun updatechart(array:ArrayList<Int>,domain:ArrayList<Int>) {
-        val list: MutableList<Int> = array.toMutableList()
-        val list1: MutableList<Int> = domain.toMutableList()
+        val list: MutableList<Number> = array.toMutableList()
+        val list1: MutableList<Number> = domain.toMutableList()
 
 
         val domainLabels = arrayOf<Number>(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24);
-        val series1Number = arrayOf<Number>(1,4,8,12,16,32,26,29,10,13);
-        val p=Arrays.asList(*list.toTypedArray())
-        val q=Arrays.asList(*list1.toTypedArray())
-        val series1 : XYSeries = SimpleXYSeries(p,SimpleXYSeries.ArrayFormat.Y_VALS_ONLY
-            ,"Series 1");
+        val series1Number = arrayOf<Number>(3,5,8,5);
+        val p=Arrays.asList(*series1Number)
+        val q=Arrays.asList(*domain.toTypedArray() )
+        val series1 : XYSeries = SimpleXYSeries(array,SimpleXYSeries.ArrayFormat.XY_VALS_INTERLEAVED
+            ,"Emociones");
         val series1Format = LineAndPointFormatter(Color.BLUE,Color.BLACK,null,null)
         series1Format.setInterpolationParams(
-            CatmullRomInterpolator.Params(10,
-                CatmullRomInterpolator.Type.Centripetal))
+            CatmullRomInterpolator.Params(100,
+                CatmullRomInterpolator.Type.Uniform))
 
         var feeling_today_plot= view?.findViewById<XYPlot>(R.id.feeling_today_plot)
 
         feeling_today_plot?.addSeries(series1,series1Format)
-        feeling_today_plot?.graph?.getLineLabelStyle(XYGraphWidget.Edge.BOTTOM)!!.format = object : Format() {
-            override fun format(
-                obj: Any?,
-                toAppendTo: StringBuffer,
-                pos: FieldPosition
-            ): StringBuffer {
-                val i = Math.round((obj as Number).toFloat())
-                return toAppendTo.append(q[i])
-            }
 
-            override fun parseObject(source: String?, pos: ParsePosition): Any? {
-                return null
-            }
 
-        }
+
         if (feeling_today_plot != null) {
             PanZoom.attach(feeling_today_plot)
         }

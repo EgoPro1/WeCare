@@ -13,13 +13,15 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="15dp"
+        >
 
         <com.androidplot.xy.XYPlot
             android:id="@+id/feeling_today_plot"
             android:layout_width="match_parent"
             android:layout_height="620dp"
-            app:domainTitle="domain"
+            app:domainTitle="Horas"
             style="@style/APDefacto.Light"
             app:rangeTitle="Emociones"
             app:title="Sentimientos de Hoy"
